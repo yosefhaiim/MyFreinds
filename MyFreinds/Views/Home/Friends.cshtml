@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MyFreinds.Models.Friend>
+
+@{
+    ViewData["Title"] = "Friends";
+}
+
+<h1>חברים</h1>
+
+<p>
+    <a asp-action="NewFriend">צור חדש</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhonNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhonNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.ActionLink("עריכה", "Edit", new {  id=item.ID }) |
+                    @Html.ActionLink("פרטי חבר", "Details", new { id = item.ID }) |
+                @Html.ActionLink("מחיקת חבר", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+
+        
+}
+    </tbody>
+</table>
